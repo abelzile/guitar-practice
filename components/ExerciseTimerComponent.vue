@@ -18,6 +18,7 @@
 <script>
   import Tock from 'tocktimer';
   import TimeUtils from '../src/time-utils';
+  import {TimerLengthMs} from '../src/consts.js';
 
   export default {
     timer: null,
@@ -36,9 +37,8 @@
     },
     methods: {
       start() {
-        const timeMs = 1000;
-        this.$store.dispatch('startTimer', {id: this.exerciseId, timeMs: timeMs});
-        this.$options.timer.start(timeMs);
+        this.$store.dispatch('startTimer', {id: this.exerciseId, timeMs: TimerLengthMs});
+        this.$options.timer.start(TimerLengthMs);
       },
       stop() {
         this.$store.dispatch('stopTimer');
@@ -80,6 +80,7 @@
     font-size: 24px;
     vertical-align: middle;
   }
+
   .timer__button {
     vertical-align: middle;
   }

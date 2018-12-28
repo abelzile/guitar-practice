@@ -22,6 +22,7 @@
     methods: {
       shuffle: function(array) {
         return ArrayUtils.shuffle(array);
+
       }
     },
     computed: mapGetters({
@@ -29,11 +30,15 @@
     })
   };
 </script>
-<style scoped>
+<style>
+  body {
+    background-color: #FFFBED;
+    background-image: url('../media/images/noise.png');
+    font-family: 'Charm', cursive;
+  }
   .app {
     text-align: center;
   }
-
   .exercise-list__divider {
     width:608px;
     margin-top:20px;

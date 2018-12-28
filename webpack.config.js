@@ -6,13 +6,24 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          transformAssetUrls: {
+            'audio': 'src'
+          }
+        }
       },
       {
         test: /\.css$/,
         use: [
           'vue-style-loader',
           'css-loader'
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif|opus)$/,
+        use: [
+          'file-loader'
         ]
       }
     ]

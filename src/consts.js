@@ -5,3 +5,5 @@ export const MotivationalStrings = [
   'Excellent work!',
   'Yes!'
 ];
+
+export const TimerLengthMs = 60000;

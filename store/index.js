@@ -16,6 +16,7 @@ import Level1 from './chord-change-exercise-data/level-1'
 import Level2 from './chord-change-exercise-data/level-2'
 import Level3 from './chord-change-exercise-data/level-3'
 import Level4 from './chord-change-exercise-data/level-4'
+import {TimerLengthMs} from '../src/consts.js';
 
 Vue.use(Vuex);
 
@@ -42,7 +43,7 @@ const state = {
   ],
   exerciseTimer: {
     id: "",
-    timeMs: 5000,
+    timeMs: TimerLengthMs,
   },
   exerciseHistory: []
 };
