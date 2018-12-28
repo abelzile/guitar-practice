@@ -1,5 +1,9 @@
 export default {
-  shuffle: function(array) {
+  shuffle(array) {
+    if (!array || array.length === 0) {
+      return [];
+    }
+
     const a = array.slice();
 
     for (let i = a.length - 1; i > 0; i--) {
@@ -8,5 +12,11 @@ export default {
     }
 
     return a;
+  },
+  random(array) {
+    if (!array || array.length === 0) {
+      return null;
+    }
+    return array[Math.floor(Math.random() * array.length)];
   }
 }

@@ -42,9 +42,9 @@ const state = {
   ],
   exerciseTimer: {
     id: "",
-    timeMs: 60000,
+    timeMs: 5000,
   },
-  chordChangeExerciseHistory: []
+  exerciseHistory: []
 };
 
 const getters = {
@@ -62,7 +62,14 @@ const getters = {
   },
   getExerciseId(state) {
     return state.exerciseTimer.id;
+  },
+  getAllExerciseHistory(state) {
+    return state.exerciseHistory;
+  },
+  getExerciseHistoryEntry(state, getters) {
+    return (exerciseId) => getters.getAllExerciseHistory.find(eh => eh.id === exerciseId);
   }
+
 };
 
 const mutations = {
@@ -71,6 +78,18 @@ const mutations = {
   },
   updateTimer(state, timeMs) {
     state.exerciseTimer.timeMs = timeMs;
+  },
+  addCurrentExerciseToHistory(state) {
+    const exerciseId = state.exerciseTimer.id;
+    let index = state.exerciseHistory.findIndex(el => el.id === exerciseId);
+
+    const newHist = { id: exerciseId, date: new Date() };
+
+    if (index === -1) {
+      state.exerciseHistory.push(newHist)
+    } else {
+      Vue.set(state.exerciseHistory, index, newHist);
+    }
   }
 };
 
@@ -80,6 +99,7 @@ const actions = {
     context.commit('updateTimer', timeMs);
   },
   stopTimer(context) {
+    context.commit('addCurrentExerciseToHistory');
     context.commit('setExerciseTimerId', '');
   },
   updateTimer(context, timeMs) {

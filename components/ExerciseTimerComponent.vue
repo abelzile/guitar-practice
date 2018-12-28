@@ -1,5 +1,6 @@
 <template>
   <div>
+    <audio id="ding" src="../media/sound/ding.opus"></audio>
     <span class="timer__display" v-show="isStartTimerVisible">{{ showTime }}</span>
     <button type="button"
             class="timer__button"
@@ -20,20 +21,22 @@
 
   export default {
     timer: null,
+    ding: null,
     mounted() {
       this.$options.timer = new Tock({
         countdown: true,
         interval: 100,
         callback: this.update,
         complete: this.complete
-      })
+      });
+      this.$options.ding = document.getElementById("ding");
     },
     props: {
       exerciseId: String
     },
     methods: {
       start() {
-        const timeMs = 60000;
+        const timeMs = 1000;
         this.$store.dispatch('startTimer', {id: this.exerciseId, timeMs: timeMs});
         this.$options.timer.start(timeMs);
       },
@@ -47,6 +50,7 @@
       },
       complete(timer) {
         this.stop();
+        this.$options.ding.play();
       }
     },
     computed: {
