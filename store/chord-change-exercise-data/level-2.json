@@ -1,0 +1,40 @@
+{
+  "level": 2,
+  "exercises": [
+    {
+      "id": "8d7aeaab-fe09-4713-b20f-667cd0e16599",
+      "chords": [
+        "Am",
+        "E"
+      ]
+    },
+    {
+      "id": "2998b8ec-2bbe-453e-9bb7-ee455d02bf46",
+      "chords": [
+        "Am",
+        "Dm"
+      ]
+    },
+    {
+      "id": "2ec181ce-f27c-4c72-aba1-944f4eaa5152",
+      "chords": [
+        "A",
+        "Dm"
+      ]
+    },
+    {
+      "id": "83532c57-2456-4098-950b-4b34e16f1938",
+      "chords": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "99b09673-7187-41de-b537-4698fc522bcc",
+      "chords": [
+        "Em",
+        "D"
+      ]
+    }
+  ]
+}

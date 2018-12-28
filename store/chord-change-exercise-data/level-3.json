@@ -1,0 +1,40 @@
+{
+  "level": 3,
+  "exercises": [
+    {
+      "id": "c61be50d-9ca1-4a75-a134-f9a1f16b2374",
+      "chords": [
+        "C",
+        "Am"
+      ]
+    },
+    {
+      "id": "fc21429a-5146-4a2d-984f-d24b56b0f297",
+      "chords": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "95304f7d-ae8b-4ba4-b80d-692a3361f88a",
+      "chords": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "0da2ce29-adb5-4033-b7e3-70212edab670",
+      "chords": [
+        "G",
+        "E"
+      ]
+    },
+    {
+      "id": "174e4337-325b-411b-8a5d-ae3edce543ff",
+      "chords": [
+        "G",
+        "D"
+      ]
+    }
+  ]
+}

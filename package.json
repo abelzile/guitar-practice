@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "name": "guitar-practice",
+  "version": "1.0.0",
+  "description": "Track your guitar practice.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abelzile/guitar-practice.git"
+  },
+  "author": "Andre Belzile",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abelzile/guitar-practice/issues"
+  },
+  "homepage": "https://github.com/abelzile/guitar-practice#readme",
+  "devDependencies": {
+    "css-loader": "^2.0.2",
+    "snapsvg": "^0.5.1",
+    "tocktimer": "^1.0.12",
+    "vue": "^2.5.17",
+    "vue-loader": "^15.4.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.5.17",
+    "vuex": "^3.0.1",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2"
+  }
+}

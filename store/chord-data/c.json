@@ -1,0 +1,28 @@
+{
+  "name": "C",
+  "firstFret": 1,
+  "fingers": [
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 2
+    },
+    {
+      "finger": 2,
+      "fret": 2,
+      "string": 4
+    },
+    {
+      "finger": 3,
+      "fret": 3,
+      "string": 5
+    }
+  ],
+  "strum": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+}

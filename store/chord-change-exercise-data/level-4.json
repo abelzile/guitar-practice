@@ -1,0 +1,61 @@
+{
+  "level": 4,
+  "exercises": [
+    {
+      "id": "9ce2aa24-d93d-4605-8d2d-719bb2ce0cba",
+      "chords": [
+        "C",
+        "G7"
+      ]
+    },
+    {
+      "id": "dfc3c9fa-cd04-4a2e-ae10-7f01fca39bde",
+      "chords": [
+        "C7",
+        "Fmaj7"
+      ]
+    },
+    {
+      "id": "9d63bb07-9785-4048-8604-af774495e6aa",
+      "chords": [
+        "E",
+        "B7"
+      ]
+    },
+    {
+      "id": "84b19a4a-39bc-4e4f-a2c9-830fc680335d",
+      "chords": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "607c7ba8-2c03-4e39-8914-cc66cc288b25",
+      "chords": [
+        "G",
+        "A"
+      ]
+    },
+    {
+      "id": "5ee50ae2-914f-4289-a7a9-4bcc3dea4648",
+      "chords": [
+        "C7",
+        "G7"
+      ]
+    },
+    {
+      "id": "505407cc-7a99-4c68-9359-3a92f219651c",
+      "chords": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "e1515dc3-af67-4b04-990c-89198f95492c",
+      "chords": [
+        "Fmaj7",
+        "A"
+      ]
+    }
+  ]
+}
