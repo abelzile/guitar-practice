@@ -10,7 +10,7 @@
     <button type="button"
             class="timer__button"
             v-show="isStopButtonVisible"
-            v-on:click="stop">Stop
+            v-on:click="stop(false)">Stop
     </button>
   </div>
 </template>
@@ -40,8 +40,8 @@
         this.$store.dispatch('startTimer', {id: this.exerciseId, timeMs: TimerLengthMs});
         this.$options.timer.start(TimerLengthMs);
       },
-      stop() {
-        this.$store.dispatch('stopTimer');
+      stop(addHistory = false) {
+        this.$store.dispatch('stopTimer', { addHistory });
         this.$options.timer.stop();
       },
       update(timer) {
@@ -49,7 +49,7 @@
         this.$store.dispatch('updateTimer', timer.lap());
       },
       complete(timer) {
-        this.stop();
+        this.stop(true);
         this.$options.ding.play();
       }
     },

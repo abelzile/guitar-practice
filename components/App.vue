@@ -20,9 +20,8 @@
       ChordChangeExerciseComponent
     },
     methods: {
-      shuffle: function(array) {
+      shuffle(array) {
         return ArrayUtils.shuffle(array);
-
       }
     },
     computed: mapGetters({

@@ -10,7 +10,8 @@
           y="50"
           fill="black"
           font-size="50px"
-          text-anchor="middle">{{ chord.name }}</text>
+          text-anchor="middle">{{ chord.name }}
+    </text>
 
     <!--frets-->
     <line v-for="(value, index) in 6"
@@ -19,10 +20,10 @@
           x2="275"
           :y2="100 + (index * 50)"
           stroke="black"
-          stroke-width="1" />
+          stroke-width="1"/>
 
     <!--nut-->
-    <line x1="25" y1="100" x2="275" y2="100" stroke="black" stroke-width="10" />
+    <line x1="25" y1="100" x2="275" y2="100" stroke="black" stroke-width="10"/>
 
     <!--strings-->
     <line v-for="(value, index) in 6"
@@ -31,7 +32,7 @@
           :x2="25 + (50 * index)"
           y2="350"
           stroke="black"
-          stroke-width="1" />
+          stroke-width="1"/>
 
     <!--strum-->
     <template v-for="(strum, index) in strums">
@@ -42,14 +43,14 @@
               y2="85"
               stroke="black"
               stroke-width="3"
-              stroke-linecap="round" />
+              stroke-linecap="round"/>
         <line :x1="15 + (50 * index)"
               y1="85"
               :x2="35 + (50 * index)"
               y2="65"
               stroke="black"
               stroke-width="3"
-              stroke-linecap="round" />
+              stroke-linecap="round"/>
       </template>
       <template v-else-if="strum === true">
         <circle r="12"
@@ -65,11 +66,12 @@
     <template v-for="fing in chord.fingers">
       <circle v-bind="getFingerCircleAttrs(fing.finger)"
               r="20"
-              fill="black" />
+              fill="black"/>
       <text v-bind="getFingerNumAttrs(fing.finger)"
             fill="#FFF8DC"
             font-size="30px"
-            text-anchor="middle">{{ fing.finger }}</text>
+            text-anchor="middle">{{ fing.finger }}
+      </text>
     </template>
   </svg>
 </template>
@@ -80,7 +82,7 @@
       chordName: String
     },
     methods: {
-      getFingerCircleAttrs: function(fingerNum) {
+      getFingerCircleAttrs(fingerNum) {
         const finger = this.chordFinger(fingerNum);
 
         return {
@@ -88,7 +90,7 @@
           cy: 125 + ((finger.fret - 1) * 50)
         }
       },
-      getFingerNumAttrs: function(fingerNum) {
+      getFingerNumAttrs(fingerNum) {
         const finger = this.chordFinger(fingerNum);
 
         return {
@@ -106,7 +108,7 @@
         return (fingerNum) => this.chord.fingers.find(f => f.finger === fingerNum);
       },
       strums() {
-        const doStrums = [ false, false, false, false, false, false ];
+        const doStrums = [false, false, false, false, false, false];
         for (const s of this.chord.strum) {
           doStrums[6 - s] = true;
         }

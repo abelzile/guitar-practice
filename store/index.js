@@ -82,8 +82,7 @@ const mutations = {
   },
   addCurrentExerciseToHistory(state) {
     const exerciseId = state.exerciseTimer.id;
-    let index = state.exerciseHistory.findIndex(el => el.id === exerciseId);
-
+    const index = state.exerciseHistory.findIndex(el => el.id === exerciseId);
     const newHist = { id: exerciseId, date: new Date() };
 
     if (index === -1) {
@@ -99,8 +98,10 @@ const actions = {
     context.commit('setExerciseTimerId', id);
     context.commit('updateTimer', timeMs);
   },
-  stopTimer(context) {
-    context.commit('addCurrentExerciseToHistory');
+  stopTimer(context, { addHistory }) {
+    if (addHistory) {
+      context.commit('addCurrentExerciseToHistory');
+    }
     context.commit('setExerciseTimerId', '');
   },
   updateTimer(context, timeMs) {

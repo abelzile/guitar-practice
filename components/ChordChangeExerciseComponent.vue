@@ -15,7 +15,7 @@
   import ChordTabComponent from './ChordTabComponent.vue';
   import ExerciseTimerComponent from './ExerciseTimerComponent.vue';
   import ArrayUtils from '../src/array-utils.js'
-  import { MotivationalStrings } from '../src/consts.js';
+  import {MotivationalStrings} from '../src/consts.js';
 
   export default {
     props: {
@@ -42,10 +42,12 @@
   .exercise__chord-tab--margin-left {
     margin-left: 10px;
   }
+
   .exercise__chord-tab--margin {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+
   .exercise__history-msg {
     font-size: 24px;
   }
