@@ -4,7 +4,7 @@
        width="300" height="400"
        xmlns="http://www.w3.org/2000/svg">
 
-    <rect width="100%" height="100%" stroke="black" stroke-width="1" fill="none"/>
+    <rect x="1" y="1" width="298" height="398" stroke="black" stroke-width="2" fill="none"/>
 
     <text x="50%"
           y="50"

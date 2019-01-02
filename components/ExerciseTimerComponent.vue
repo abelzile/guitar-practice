@@ -1,17 +1,19 @@
 <template>
   <div>
     <audio id="ding" src="../media/sound/ding.opus"></audio>
-    <span class="timer__display" v-show="isStartTimerVisible">{{ showTime }}</span>
-    <button type="button"
-            class="timer__button"
-            v-show="isStartButtonVisible"
-            v-on:click="start">Start
-    </button>
-    <button type="button"
-            class="timer__button"
-            v-show="isStopButtonVisible"
-            v-on:click="stop(false)">Stop
-    </button>
+    <span v-visible="isStartButtonVisible || isStopButtonVisible" class="timer__decoration">
+      <span class="timer__display" v-visible="isStartTimerVisible">{{ showTime }}</span>
+      <button type="button"
+              class="timer__button"
+              v-show="isStartButtonVisible"
+              v-on:click="start">Start
+      </button>
+      <button type="button"
+              class="timer__button"
+              v-show="isStopButtonVisible"
+              v-on:click="stop(false)">Stop
+      </button>
+    </span>
   </div>
 </template>
 
@@ -41,7 +43,7 @@
         this.$options.timer.start(TimerLengthMs);
       },
       stop(addHistory = false) {
-        this.$store.dispatch('stopTimer', { addHistory });
+        this.$store.dispatch('stopTimer', {addHistory});
         this.$options.timer.stop();
       },
       update(timer) {
@@ -75,6 +77,12 @@
 </script>
 
 <style scoped>
+  .timer__decoration {
+    display: inline-block;
+    padding: 2px;
+    border-bottom: 2px solid black;
+  }
+
   .timer__display {
     font-family: 'Cutive Mono', monospace;
     font-size: 24px;

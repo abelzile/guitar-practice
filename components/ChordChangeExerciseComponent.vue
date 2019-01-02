@@ -9,13 +9,15 @@
     <div class="exercise__history-msg">
       {{ getHistoryMsg(this.exercise.id) }}
     </div>
+    <h2>-~ # ~-</h2>
   </div>
-</template>
+
+  </template>
 <script>
   import ChordTabComponent from './ChordTabComponent.vue';
   import ExerciseTimerComponent from './ExerciseTimerComponent.vue';
   import ArrayUtils from '../src/array-utils.js'
-  import {MotivationalStrings} from '../src/consts.js';
+  import {MotivationalStrings, TimerLengthMs} from '../src/consts.js';
 
   export default {
     props: {
@@ -32,7 +34,7 @@
         if (!entry) {
           return null;
         } else {
-          return 'Completed on: ' + entry.date.toLocaleString() + '. ' + ArrayUtils.random(MotivationalStrings);
+          return 'Completed on: ' + entry.date.toLocaleString() + '. ' + entry.message;
         }
       }
     }

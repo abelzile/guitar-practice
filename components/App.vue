@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="app">
-    <h1>Chord Changes</h1>
+    <h1>-~ Chord Changes ~-</h1>
     <div v-for="exercise in exercises">
-      <h2>- Stage {{exercise.level}} -</h2>
+      <h2>-~ Stage {{exercise.level}} ~-</h2>
       <ChordChangeExerciseComponent
           v-for="(item, index) in shuffle(exercise.exercises)"
           v-bind:key="item.id"
@@ -31,7 +31,7 @@
 </script>
 <style>
   body {
-    background-color: #FFFBED;
+    background-color: #edd9a7;
     background-image: url('../media/images/noise.png');
     font-family: 'Charm', cursive;
   }

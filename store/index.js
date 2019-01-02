@@ -16,7 +16,8 @@ import Level1 from './chord-change-exercise-data/level-1'
 import Level2 from './chord-change-exercise-data/level-2'
 import Level3 from './chord-change-exercise-data/level-3'
 import Level4 from './chord-change-exercise-data/level-4'
-import {TimerLengthMs} from '../src/consts.js';
+import {TimerLengthMs, MotivationalStrings} from '../src/consts.js';
+import ArrayUtils from '../src/array-utils.js'
 
 Vue.use(Vuex);
 
@@ -70,7 +71,6 @@ const getters = {
   getExerciseHistoryEntry(state, getters) {
     return (exerciseId) => getters.getAllExerciseHistory.find(eh => eh.id === exerciseId);
   }
-
 };
 
 const mutations = {
@@ -83,7 +83,11 @@ const mutations = {
   addCurrentExerciseToHistory(state) {
     const exerciseId = state.exerciseTimer.id;
     const index = state.exerciseHistory.findIndex(el => el.id === exerciseId);
-    const newHist = { id: exerciseId, date: new Date() };
+    const newHist = {
+      id: exerciseId,
+      date: new Date(),
+      message: ArrayUtils.random(MotivationalStrings)
+    };
 
     if (index === -1) {
       state.exerciseHistory.push(newHist)
