@@ -28,6 +28,8 @@
   import TimeUtils from '../src/time-utils';
   import {TimerLengthMs, MinBpm, MaxBpm} from '../src/consts.js';
   import {Howl} from 'howler';
+  import DingSound from '../media/sounds/ding.opus';
+  import Metro1Sound from '../media/sounds/conga.opus';
 
   export default {
     _timer: null,
@@ -47,10 +49,10 @@
         complete: this.complete
       });
       this.$options._ding = new Howl({
-        src: [require('../media/sounds/ding.opus')]
+        src: [DingSound]
       });
       this.$options._metro1 = new Howl({
-        src: [require('../media/sounds/conga.opus')]
+        src: [Metro1Sound]
       });
     },
     props: {
