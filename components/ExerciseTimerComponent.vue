@@ -47,10 +47,10 @@
         complete: this.complete
       });
       this.$options._ding = new Howl({
-        src: ['../media/sound/ding.opus']
+        src: ['../media/sounds/ding.opus']
       });
       this.$options._metro1 = new Howl({
-        src: ['../media/sound/conga.opus']
+        src: ['../media/sounds/conga.opus']
       });
     },
     props: {
@@ -148,6 +148,6 @@
   }
 
   .timer__bpm {
-    width: 5em;
+    width: 4em;
   }
 </style>
