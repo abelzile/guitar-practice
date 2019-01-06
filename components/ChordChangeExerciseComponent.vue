@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h3>-~ {{ getTitle() }} ~-</h3>
     <template v-for="(item, index) in exercise.chords">
       <ChordTabComponent
           v-bind:chord-name="item"
@@ -9,7 +10,7 @@
     <div class="exercise__history-msg">
       {{ getHistoryMsg(this.exercise.id) }}
     </div>
-    <h2>-~ # ~-</h2>
+
   </div>
 
   </template>
@@ -28,6 +29,9 @@
       ChordTabComponent
     },
     methods: {
+      getTitle() {
+        return this.exercise.chords.join(' to ');
+      },
       getHistoryMsg(exerciseId) {
         const entry = this.$store.getters.getExerciseHistoryEntry(exerciseId);
 

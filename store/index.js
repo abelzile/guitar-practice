@@ -45,6 +45,7 @@ const state = {
   exerciseTimer: {
     id: "",
     timeMs: TimerLengthMs,
+    bpm: null
   },
   exerciseHistory: []
 };
@@ -64,6 +65,9 @@ const getters = {
   },
   getExerciseId(state) {
     return state.exerciseTimer.id;
+  },
+  getBpm(state) {
+    return state.exerciseTimer.bpm;
   },
   getAllExerciseHistory(state) {
     return state.exerciseHistory;
@@ -94,6 +98,9 @@ const mutations = {
     } else {
       Vue.set(state.exerciseHistory, index, newHist);
     }
+  },
+  setBpm(state, bpm) {
+    state.exerciseTimer.bpm = bpm;
   }
 };
 
@@ -110,6 +117,9 @@ const actions = {
   },
   updateTimer(context, timeMs) {
     context.commit('updateTimer', timeMs);
+  },
+  updateBpm(context, bpm) {
+    context.commit('setBpm', bpm);
   }
 };
 

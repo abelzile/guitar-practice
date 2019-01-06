@@ -1,18 +1,24 @@
 <template>
   <div>
-    <audio id="ding" src="../media/sound/ding.opus"></audio>
-    <span v-visible="isStartButtonVisible || isStopButtonVisible" class="timer__decoration">
-      <span class="timer__display" v-visible="isStartTimerVisible">{{ showTime }}</span>
+    <span v-visible="isStartVisible || isStopVisible" class="timer__decoration">
+      <span class="timer__display" v-visible="isTimeVisible">{{ time }}</span>
       <button type="button"
               class="timer__button"
-              v-show="isStartButtonVisible"
+              v-show="isStartVisible"
               v-on:click="start">Start
       </button>
       <button type="button"
               class="timer__button"
-              v-show="isStopButtonVisible"
+              v-show="isStopVisible"
               v-on:click="stop(false)">Stop
       </button>
+      <input type="number"
+             class="timer__bpm"
+             :min="MinBpm"
+             :max="MaxBpm"
+             placeholder="BPM"
+             v-model="bpm"
+             :disabled="!isStartVisible"/>
     </span>
   </div>
 </template>
@@ -20,57 +26,105 @@
 <script>
   import Tock from 'tocktimer';
   import TimeUtils from '../src/time-utils';
-  import {TimerLengthMs} from '../src/consts.js';
+  import {TimerLengthMs, MinBpm, MaxBpm} from '../src/consts.js';
+  import {Howl} from 'howler';
 
   export default {
-    timer: null,
-    ding: null,
+    _timer: null,
+    _displayIntervalMs: 100,
+    _displayLast: null,
+    _ding: null,
+    _metro1: null,
+    _metro2: null,
+    _isMetronomeOn: false,
+    _beatIntervalMs: null,
+    _beatLast: null,
     mounted() {
-      this.$options.timer = new Tock({
+      this.$options._timer = new Tock({
         countdown: true,
-        interval: 100,
+        interval: 10,
         callback: this.update,
         complete: this.complete
       });
-      this.$options.ding = document.getElementById("ding");
+      this.$options._ding = new Howl({
+        src: ['../media/sound/ding.opus']
+      });
+      this.$options._metro1 = new Howl({
+        src: ['../media/sound/conga.opus']
+      });
     },
     props: {
       exerciseId: String
     },
     methods: {
       start() {
+        const bpm = this.$store.state.exerciseTimer.bpm;
+        const isBpmValid = this.isBpmValid(bpm);
+
+        this.$options._isMetronomeOn = isBpmValid;
+
+        if (isBpmValid) {
+          this.$options._beatIntervalMs = 60 / bpm * 1000;
+        }
+
         this.$store.dispatch('startTimer', {id: this.exerciseId, timeMs: TimerLengthMs});
-        this.$options.timer.start(TimerLengthMs);
+        this.$options._timer.start(TimerLengthMs);
       },
       stop(addHistory = false) {
         this.$store.dispatch('stopTimer', {addHistory});
-        this.$options.timer.stop();
+        this.$options._timer.stop();
+        this.$options._displayLast = null;
+        this.$options._beatLast = null;
       },
       update(timer) {
-        timer = timer || this.$options.timer;
-        this.$store.dispatch('updateTimer', timer.lap());
+        timer = timer || this.$options._timer;
+
+        const lap = timer.lap();
+
+        if (!this.$options._displayLast || this.$options._displayLast - lap >= this.$options._displayIntervalMs) {
+          this.$options._displayLast = lap;
+          this.$store.dispatch('updateTimer', lap);
+        }
+
+        if (this.$options._isMetronomeOn && (!this.$options._beatLast || this.$options._beatLast - lap >= this.$options._beatIntervalMs)) {
+          this.$options._beatLast = lap;
+          this.$options._metro1.play();
+        }
       },
       complete(timer) {
         this.stop(true);
-        this.$options.ding.play();
+        this.$options._ding.play();
+        this.$options._displayLast = null;
+        this.$options._beatLast = null;
+      },
+      isBpmValid(bpm) {
+        return Number.isInteger(bpm) && MinBpm <= bpm && bpm <= MaxBpm;
       }
     },
     computed: {
-      isStartButtonVisible() {
-        return this.$store.getters.getExerciseId === '';
+      bpm: {
+        get() {
+          return parseInt(this.$store.state.exerciseTimer.bpm, 10);
+        },
+        set(value) {
+          this.$store.dispatch('updateBpm', parseInt(value, 10));
+        }
       },
-      isStartTimerVisible() {
-        return this.$store.getters.getExerciseId === this.exerciseId;
-      },
-      isStopButtonVisible() {
-        return this.$store.getters.getExerciseId === this.exerciseId;
-      },
-      showTime() {
+      time() {
         let timeMs = this.$store.getters.getExerciseTimeMs;
         if (timeMs < 0) {
           timeMs = 0;
         }
         return TimeUtils.msToTime(timeMs);
+      },
+      isStartVisible() {
+        return this.$store.getters.getExerciseId === '';
+      },
+      isTimeVisible() {
+        return this.$store.getters.getExerciseId === this.exerciseId;
+      },
+      isStopVisible() {
+        return this.$store.getters.getExerciseId === this.exerciseId;
       }
     }
   }
@@ -91,5 +145,9 @@
 
   .timer__button {
     vertical-align: middle;
+  }
+
+  .timer__bpm {
+    width: 5em;
   }
 </style>
