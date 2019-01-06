@@ -47,10 +47,10 @@
         complete: this.complete
       });
       this.$options._ding = new Howl({
-        src: ['../media/sounds/ding.opus']
+        src: [require('../media/sounds/ding.opus')]
       });
       this.$options._metro1 = new Howl({
-        src: ['../media/sounds/conga.opus']
+        src: [require('../media/sounds/conga.opus')]
       });
     },
     props: {
