@@ -14,8 +14,8 @@
       </button>
       <input type="number"
              class="timer__bpm"
-             :min="MinBpm"
-             :max="MaxBpm"
+             :min="minBpm"
+             :max="maxBpm"
              placeholder="BPM"
              v-model="bpm"
              :disabled="!isStartVisible"/>
@@ -125,6 +125,12 @@
       },
       isStopVisible() {
         return this.$store.getters.getExerciseId === this.exerciseId;
+      },
+      minBpm() {
+        return MinBpm;
+      },
+      maxBpm() {
+        return MaxBpm;
       }
     }
   }
