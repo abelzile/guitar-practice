@@ -18,5 +18,12 @@ export default {
       return null;
     }
     return array[Math.floor(Math.random() * array.length)];
+  },
+  clear(array) {
+    if (!array || array.length === 0) {
+      return;
+    }
+    //array.splice(0, array.length);
+    array.length = 0;
   }
 }

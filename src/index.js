@@ -1,6 +1,10 @@
 import Vue from 'vue'
-import App from '../components/App.vue'
+import VueRouter from 'vue-router'
+import TheApp from '../components/TheApp.vue'
 import store from '../store';
+import routes from '../routes';
+
+Vue.use(VueRouter);
 
 Vue.directive('visible', (el, binding) => {
   if (!!binding.value) {
@@ -10,8 +14,13 @@ Vue.directive('visible', (el, binding) => {
   }
 });
 
+const router = new VueRouter({
+  routes
+});
+
 new Vue({
   el: '#app',
-  render: h => h(App),
-  store: store
+  render: h => h(TheApp),
+  store,
+  router
 });
