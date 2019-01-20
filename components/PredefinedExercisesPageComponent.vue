@@ -1,6 +1,6 @@
 <template>
-  <div id="app" class="app">
-    <h1>-~ Chord Changes ~-</h1>
+  <div>
+    <h1>-~ Predefined Chord Changes ~-</h1>
     <div v-for="exercise in exercises">
       <h2>-~ Stage {{exercise.level}} ~-</h2>
       <ChordChangeExerciseComponent
@@ -11,9 +11,9 @@
   </div>
 </template>
 <script>
-  import ChordChangeExerciseComponent from './ChordChangeExerciseComponent.vue'
-  import { mapGetters } from 'vuex'
+  import {mapGetters} from 'vuex'
   import ArrayUtils from '../src/array-utils.js';
+  import ChordChangeExerciseComponent from './ChordChangeExerciseComponent.vue'
 
   export default {
     components: {
@@ -34,9 +34,6 @@
     background-color: #edd9a7;
     background-image: url('../media/images/noise.png');
     font-family: 'Charm', cursive;
-  }
-  .app {
-    text-align: center;
   }
   .exercise-list__divider {
     width:608px;
