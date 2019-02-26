@@ -12,8 +12,7 @@
     </div>
 
   </div>
-
-  </template>
+</template>
 <script>
   import ChordTabComponent from './ChordTabComponent.vue';
   import ExerciseTimerComponent from './ExerciseTimerComponent.vue';
@@ -22,7 +21,8 @@
 
   export default {
     props: {
-      exercise: Object
+      exercise: Object,
+      exerciseNum: Number
     },
     components: {
       ExerciseTimerComponent,
@@ -30,7 +30,7 @@
     },
     methods: {
       getTitle() {
-        return this.exercise.chords.join(' to ');
+        return 'Exercise ' + this.exerciseNum + ': ' + this.exercise.chords.join(' to ');
       },
       getHistoryMsg(exerciseId) {
         const entry = this.$store.getters.getExerciseHistoryEntry(exerciseId);

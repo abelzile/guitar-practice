@@ -11,6 +11,9 @@ import Em from './chord-data/em.json'
 import G7 from './chord-data/g7.json'
 import C7 from './chord-data/c7.json'
 import B7 from './chord-data/b7.json'
+import A7 from './chord-data/a7.json'
+import D7 from './chord-data/d7.json'
+import E7 from './chord-data/e7.json'
 import Fmaj7 from './chord-data/fmaj7.json'
 import Level1 from './chord-change-exercise-data/level-1'
 import Level2 from './chord-change-exercise-data/level-2'
@@ -35,6 +38,9 @@ const state = {
     C7,
     B7,
     Fmaj7,
+    A7,
+    D7,
+    E7
   ],
   chordChangeExercises: [
     Level1,

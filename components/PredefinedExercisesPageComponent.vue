@@ -6,7 +6,8 @@
       <ChordChangeExerciseComponent
           v-for="(item, index) in shuffle(exercise.exercises)"
           v-bind:key="item.id"
-          v-bind:exercise="item"/>
+          v-bind:exercise="item"
+          v-bind:exercise-num="index + 1"/>
     </div>
   </div>
 </template>
