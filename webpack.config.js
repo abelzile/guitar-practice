@@ -8,6 +8,9 @@ module.exports = {
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
+  devServer: {
+    contentBase: './dist'
+  },
   module: {
     rules: [
       {

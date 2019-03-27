@@ -64,14 +64,24 @@
 
     <!--fingers-->
     <template v-for="fing in chord.fingers">
-      <circle v-bind="getFingerCircleAttrs(fing.finger)"
-              r="20"
+      <template v-if="!isBarre(fing)">
+        <circle v-bind="getFingerAttrs(fing.finger)"
+                r="20"
+                fill="black"/>
+      </template>
+      <template v-else>
+        <rect v-bind="getFingerAttrs(fing.finger)" 
+              rx="19" 
+              ry="19" 
+              height="38"
+              stroke="0"
               fill="black"/>
+      </template>
       <text v-bind="getFingerNumAttrs(fing.finger)"
-            fill="#FFF8DC"
-            font-size="30px"
-            text-anchor="middle">{{ fing.finger }}
-      </text>
+              fill="#FFF8DC"
+              font-size="30px"
+              text-anchor="middle">{{ fing.finger }}
+        </text>
     </template>
   </svg>
 </template>
@@ -82,23 +92,48 @@
       chordName: String
     },
     methods: {
-      getFingerCircleAttrs(fingerNum) {
+      getFingerAttrs(fingerNum) {
         const finger = this.chordFinger(fingerNum);
+        
+        if (this.isBarre(finger)) {
+          const strings = finger.string;
+          const lowString = Math.max(...strings);
 
-        return {
-          cx: 25 + (50 * ((6 - finger.string))),
-          cy: 125 + ((finger.fret - 1) * 50)
+          return {
+            width: strings.length * 50 - 20,
+            x: (6 - lowString) * 50 + 10,
+            y: (finger.fret - 1) * 50 + 108
+          }
+        } else {
+          return {
+            cx: (6 - finger.string) * 50 + 25,
+            cy: (finger.fret - 1) * 50 + 125
+          }
         }
       },
       getFingerNumAttrs(fingerNum) {
         const finger = this.chordFinger(fingerNum);
 
-        return {
-          x: 25 + (50 * ((6 - finger.string))),
-          y: 135 + ((finger.fret - 1) * 50)
-        }
-      }
+        if (this.isBarre(finger)) {
+          const strings = finger.string;
+          const lowString = Math.max(...strings);
+          const x = (6 - lowString) * 50 + 10;
+          const width = strings.length * 50 - 20;
 
+          return {
+            x: (width / 2) + x,
+            y: (finger.fret - 1) * 50 + 135
+          }
+        } else {
+          return {
+            x: (6 - finger.string) * 50 + 25,
+            y: (finger.fret - 1) * 50 + 135
+          }
+        }
+      },
+      isBarre(finger) {
+        return Array.isArray(finger.string);
+      }
     },
     computed: {
       chord() {
