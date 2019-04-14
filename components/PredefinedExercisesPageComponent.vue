@@ -30,12 +30,7 @@
     })
   };
 </script>
-<style>
-  body {
-    background-color: #edd9a7;
-    background-image: url('../media/images/noise.png');
-    font-family: 'Charm', cursive;
-  }
+<style scoped>
   .exercise-list__divider {
     width:608px;
     margin-top:20px;

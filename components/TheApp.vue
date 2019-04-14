@@ -16,8 +16,13 @@
   }
 </script>
 
-<style scoped>
+<style>
+  body {
+    background-image: url('../media/images/ricepaper2.png');
+    font-family: 'Charm', cursive;
+  }
   .app {
     text-align: center;
   }
+
 </style>
