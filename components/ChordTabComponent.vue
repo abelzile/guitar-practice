@@ -4,8 +4,10 @@
        width="300" height="400"
        xmlns="http://www.w3.org/2000/svg">
 
+    <!--border-->
     <rect x="1" y="1" width="298" height="398" stroke="black" stroke-width="2" fill="none"/>
 
+    <!--chord name-->
     <text x="50%"
           y="50"
           fill="black"
@@ -22,8 +24,19 @@
           stroke="black"
           stroke-width="1"/>
 
+    <!--fret numbers-->
+    <text v-for="(value, index) in 5"
+          x="12"
+          :y="134 + (index * 50)"
+          fill="black"
+          font-size="16px"
+          text-anchor="middle">{{ index + chord.firstFret }}
+    </text>
+
     <!--nut-->
-    <line x1="25" y1="100" x2="275" y2="100" stroke="black" stroke-width="10"/>
+    <template v-if="chord.firstFret === 1">
+      <line x1="25" y1="100" x2="275" y2="100" stroke="black" stroke-width="10"/>
+    </template>
 
     <!--strings-->
     <line v-for="(value, index) in 6"
@@ -78,14 +91,25 @@
               fill="black"/>
       </template>
       <text v-bind="getFingerNumAttrs(fing.finger)"
-              fill="#FFF8DC"
-              font-size="30px"
-              text-anchor="middle">{{ fing.finger }}
+            fill="#FFF8DC"
+            font-size="30px"
+            text-anchor="middle">{{ fing.finger }}
         </text>
     </template>
+
+    <!--notes-->
+    <text v-for="(value, index) in 6"
+          :x="25 + (50 * index)"
+          :y="380"
+          fill="black"
+          font-size="16px"
+          text-anchor="middle">{{ getNote(index) }}
+    </text>
+
   </svg>
 </template>
 <script>
+  import {AllNotes, EStandardNotes} from '../src/consts.js';
 
   export default {
     props: {
@@ -133,6 +157,33 @@
       },
       isBarre(finger) {
         return Array.isArray(finger.string);
+      },
+      getNote(stringIndex) {
+        const stringNum = 6 - stringIndex;
+        const fingers = [...this.chord.fingers].sort((a, b) => a.fret - b.fret);
+
+        let note = EStandardNotes[stringIndex];
+
+        // Don't exit this loop early. In the case of a barre a string may be pressed twice.
+        for (var finger of fingers) {
+          if ((this.isBarre(finger) && finger.string.includes(stringNum)) || finger.string === stringNum) {
+            note = this.calculateNote(note, finger.fret);
+          }
+        }
+
+        return note;
+      },
+      calculateNote(startingNote, fret) {
+        let startingIndex = AllNotes.indexOf(startingNote);
+
+        for (let i = 0; i < fret; ++i) {
+          startingIndex++;
+          if (startingIndex === AllNotes.length) {
+            startingIndex = 0;
+          }
+        }
+
+        return AllNotes[startingIndex];
       }
     },
     computed: {

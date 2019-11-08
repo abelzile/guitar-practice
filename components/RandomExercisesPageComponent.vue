@@ -3,15 +3,17 @@
     <h1>-~ Random Chord Changes ~-</h1>
     <div>
       <template v-for="(item, index) in allChords">
-        <label v-bind:key="item.name">
-          <input type="checkbox"
-                 v-model="selectedChords"
-                 v-bind:key="item.name"
-                 v-bind:value="item"/>
-          {{item.name}}
-        </label> 
-        <br v-bind:key="item.name"
-            v-if="index > 0 && (index + 1) % 10 === 0"/>
+        <span v-bind:key="item.name">
+          <label>
+            <input type="checkbox"
+                  v-model="selectedChords"
+                  v-bind:key="item.name"
+                  v-bind:value="item"/>
+            {{item.name}}
+          </label> 
+          <br v-bind:key="item.name"
+              v-if="index > 0 && (index + 1) % 10 === 0"/>
+        </span>
       </template>
     </div>
     <div>
