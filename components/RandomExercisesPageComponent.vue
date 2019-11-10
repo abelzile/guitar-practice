@@ -1,5 +1,6 @@
 <template>
   <div>
+    <vue-headful title="Guitar Practice - Random Chord Changes" />
     <h1>-~ Random Chord Changes ~-</h1>
     <div>
       <template v-for="(item, index) in allChords">

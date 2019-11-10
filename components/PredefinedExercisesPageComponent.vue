@@ -1,7 +1,9 @@
 <template>
   <div>
+    <vue-headful title="Guitar Practice - Predefined Chord Changes" />
     <h1>-~ Predefined Chord Changes ~-</h1>
-    <div v-for="exercise in exercises">
+    <div v-for="exercise in exercises" 
+         v-bind:key="exercise.level">
       <h2>-~ Stage {{exercise.level}} ~-</h2>
       <ChordChangeExerciseComponent
           v-for="(item, index) in shuffle(exercise.exercises)"
