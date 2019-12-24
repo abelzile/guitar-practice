@@ -30,6 +30,7 @@
   import {Howl} from 'howler';
   import DingSound from '../media/sounds/ding.opus';
   import Metro1Sound from '../media/sounds/conga.opus';
+  import Metro2Sound from '../media/sounds/clave.opus';
 
   export default {
     _timer: null,
@@ -41,6 +42,7 @@
     _isMetronomeOn: false,
     _beatIntervalMs: null,
     _beatLast: null,
+    _beatNum: 1,
     mounted() {
       this.$options._timer = new Tock({
         countdown: true,
@@ -54,6 +56,9 @@
       this.$options._metro1 = new Howl({
         src: [Metro1Sound]
       });
+      this.$options._metro2 = new Howl({
+        src: [Metro2Sound]
+      })
     },
     props: {
       exerciseId: String
@@ -64,6 +69,7 @@
         const isBpmValid = this.isBpmValid(bpm);
 
         this.$options._isMetronomeOn = isBpmValid;
+        this.$options._beatNum = 1;
 
         if (isBpmValid) {
           this.$options._beatIntervalMs = 60 / bpm * 1000;
@@ -90,7 +96,18 @@
 
         if (this.$options._isMetronomeOn && (!this.$options._beatLast || this.$options._beatLast - lap >= this.$options._beatIntervalMs)) {
           this.$options._beatLast = lap;
-          this.$options._metro1.play();
+
+          if (this.$options._beatNum === 4){
+            this.$options._metro2.play();
+          } else {
+            this.$options._metro1.play();
+          }
+
+          this.$options._beatNum++;
+
+          if (this.$options._beatNum > 4) {
+            this.$options._beatNum = 1;
+          }
         }
       },
       complete(timer) {
