@@ -2,10 +2,10 @@
   <div>
     <vue-headful title="Guitar Practice - Random Chord Changes" />
     <h1>-~ Random Chord Changes ~-</h1>
-    <div>
+    <div class="chord-list-grid">
       <template v-for="(item, index) in allChords">
-        <span v-bind:key="item.name">
-          <label>
+        <div v-bind:key="item.name">
+          <label class="chord-list-grid__item">
             <input type="checkbox"
                   v-model="selectedChords"
                   v-bind:key="item.name"
@@ -14,7 +14,7 @@
           </label> 
           <br v-bind:key="item.name"
               v-if="index > 0 && (index + 1) % 10 === 0"/>
-        </span>
+        </div>
       </template>
     </div>
     <div>
@@ -125,5 +125,21 @@
     width:608px;
     margin-top:20px;
     margin-bottom: 20px;
+  }
+
+  .chord-list-grid {
+    margin:0 auto 20px auto;
+    display:grid;
+    grid-template-columns:repeat(10, auto);
+    justify-items:start;
+    gap: 2px;
+    justify-content: center;
+  }
+
+  .chord-list-grid__item {
+    background:rgba(255, 255, 255, .6);
+    display:inline-block;
+    width:6em;
+    text-align:left;
   }
 </style>
