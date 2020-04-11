@@ -78,19 +78,19 @@
     <!--fingers-->
     <template v-for="fing in chord.fingers">
       <template v-if="!isBarre(fing)">
-        <circle v-bind="getFingerAttrs(fing.finger)"
+        <circle v-bind="getFingerAttrs(fing)"
                 r="20"
                 fill="black"/>
       </template>
       <template v-else>
-        <rect v-bind="getFingerAttrs(fing.finger)" 
+        <rect v-bind="getFingerAttrs(fing)" 
               rx="19" 
               ry="19" 
               height="38"
               stroke="0"
               fill="black"/>
       </template>
-      <text v-bind="getFingerNumAttrs(fing.finger)"
+      <text v-bind="getFingerNumAttrs(fing)"
             fill="#FFF8DC"
             font-size="30px"
             text-anchor="middle">{{ fing.finger }}
@@ -116,9 +116,7 @@
       chordName: String
     },
     methods: {
-      getFingerAttrs(fingerNum) {
-        const finger = this.chordFinger(fingerNum);
-        
+      getFingerAttrs(finger) {
         if (this.isBarre(finger)) {
           const strings = finger.string;
           const lowString = Math.max(...strings);
@@ -135,8 +133,8 @@
           }
         }
       },
-      getFingerNumAttrs(fingerNum) {
-        const finger = this.chordFinger(fingerNum);
+      getFingerNumAttrs(finger) {
+        //const finger = this.chordFinger(fingerNum);
 
         if (this.isBarre(finger)) {
           const strings = finger.string;

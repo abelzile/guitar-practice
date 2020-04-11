@@ -1,0 +1,96 @@
+{
+  "id": "e45b8823-f5c2-4167-8e89-b914e434f817",
+  "name": "Dorian",
+  "fingers": [
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 3
+    },
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 4
+    },
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 5
+    },
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 6
+    },
+    {
+      "finger": 1,
+      "fret": 3,
+      "string": 1
+    },
+    {
+      "finger": 1,
+      "fret": 3,
+      "string": 2
+    },
+    {
+      "finger": 2,
+      "fret": 3,
+      "string": 3
+    },
+    {
+      "finger": 2,
+      "fret": 3,
+      "string": 4
+    },
+    {
+      "finger": 2,
+      "fret": 3,
+      "string": 5
+    },
+    {
+      "finger": 2,
+      "fret": 3,
+      "string": 6
+    },
+    {
+      "finger": 2,
+      "fret": 4,
+      "string": 1
+    },
+    {
+      "finger": 2,
+      "fret": 4,
+      "string": 2
+    },
+    {
+      "finger": 3,
+      "fret": 4,
+      "string": 6
+    },
+    {
+      "finger": 4,
+      "fret": 5,
+      "string": 3
+    },
+    {
+      "finger": 4,
+      "fret": 5,
+      "string": 4
+    },
+    {
+      "finger": 4,
+      "fret": 5,
+      "string": 5
+    },
+    {
+      "finger": 4,
+      "fret": 6,
+      "string": 1
+    },
+    {
+      "finger": 4,
+      "fret": 6,
+      "string": 2
+    }
+  ]
+}

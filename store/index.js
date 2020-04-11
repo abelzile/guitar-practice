@@ -22,6 +22,9 @@ import Level1 from './chord-change-exercise-data/level-1'
 import Level2 from './chord-change-exercise-data/level-2'
 import Level3 from './chord-change-exercise-data/level-3'
 import Level4 from './chord-change-exercise-data/level-4'
+import MinorPentatonic from './scale-data/minor-pentatonic.json'
+import MajorIonian from './scale-data/major-(ionian).json'
+import Dorian from './scale-data/dorian.json'
 import {TimerLengthMs, MotivationalStrings} from '../src/consts.js';
 import ArrayUtils from '../src/array-utils.js'
 
@@ -47,6 +50,11 @@ const state = {
     F,
     Falt1,
     Falt2
+  ],
+  scales: [
+    MinorPentatonic,
+    MajorIonian,
+    Dorian
   ],
   chordChangeExercises: [
     Level1,
@@ -86,6 +94,12 @@ const getters = {
   },
   getExerciseHistoryEntry(state, getters) {
     return (exerciseId) => getters.getAllExerciseHistory.find(eh => eh.id === exerciseId);
+  },
+  getAllScales(state) {
+    return state.scales;
+  },
+  getScale(state, getters) {
+    return (id) => getters.getAllScales.find(scale => scale.id === id);
   }
 };
 

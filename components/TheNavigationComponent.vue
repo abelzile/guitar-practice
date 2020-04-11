@@ -5,6 +5,8 @@
     ~
     <router-link to="/random">Random Exercises</router-link>
     ~
+    <router-link to="/scales">Scales</router-link>
+    ~
     <hr/>
   </div>
 </template>

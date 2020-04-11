@@ -1,0 +1,65 @@
+{
+  "id": "fa8f2bb2-1e4d-43f3-aee5-c54146dc6606",
+  "name": "Minor Pentatonic",
+  "fingers": [
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 6
+    },
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 5
+    },
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 4
+    },
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 3
+    },{
+      "finger": 1,
+      "fret": 1,
+      "string": 2
+    },
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 1
+    },
+    {
+      "finger": 4,
+      "fret": 4,
+      "string": 1
+    },
+    {
+      "finger": 4,
+      "fret": 4,
+      "string": 2
+    },
+    {
+      "finger": 3,
+      "fret": 3,
+      "string": 3
+    },
+    {
+      "finger": 3,
+      "fret": 3,
+      "string": 4
+    },
+    {
+      "finger": 3,
+      "fret": 3,
+      "string": 5
+    },
+    {
+      "finger": 4,
+      "fret": 4,
+      "string": 6
+    }
+  ]
+}

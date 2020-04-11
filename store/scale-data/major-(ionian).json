@@ -1,0 +1,96 @@
+{
+  "id": "0e648fac-034c-4884-a2ce-8379326105e0",
+  "name": "Major (Ionian)",
+  "fingers": [
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 5
+    },
+    {
+      "finger": 1,
+      "fret": 1,
+      "string": 6
+    },
+    {
+      "finger": 1,
+      "fret": 2,
+      "string": 3
+    },
+    {
+      "finger": 1,
+      "fret": 2,
+      "string": 4
+    },
+    {
+      "finger": 1,
+      "fret": 3,
+      "string": 1
+    },
+    {
+      "finger": 1,
+      "fret": 3,
+      "string": 2
+    },
+    {
+      "finger": 2,
+      "fret": 3,
+      "string": 3
+    },
+    {
+      "finger": 2,
+      "fret": 3,
+      "string": 4
+    },
+    {
+      "finger": 2,
+      "fret": 3,
+      "string": 5
+    },
+    {
+      "finger": 2,
+      "fret": 3,
+      "string": 6
+    },
+    {
+      "finger": 3,
+      "fret": 5,
+      "string": 1
+    },
+    {
+      "finger": 3,
+      "fret": 5,
+      "string": 2
+    },
+    {
+      "finger": 4,
+      "fret": 5,
+      "string": 3
+    },
+    {
+      "finger": 4,
+      "fret": 5,
+      "string": 4
+    },
+    {
+      "finger": 4,
+      "fret": 5,
+      "string": 5
+    },
+    {
+      "finger": 4,
+      "fret": 5,
+      "string": 6
+    },
+    {
+      "finger": 4,
+      "fret": 6,
+      "string": 1
+    },
+    {
+      "finger": 4,
+      "fret": 6,
+      "string": 2
+    }
+  ]
+}
