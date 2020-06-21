@@ -8,6 +8,7 @@
     <router-link to="/scales">Scales</router-link>
     ~
     <router-link to="/metronome">Metronome</router-link>
+    ~
     <hr/>
   </div>
 </template>
