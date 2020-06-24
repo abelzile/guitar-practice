@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-headful title="Guitar Practice - Predefined Chord Changes" />
+    <vue-headful title="Guitar Practice - Metronome" />
     <h1>-~ Metronome ~-</h1>
     <ExerciseTimerComponent
       exercise-id="not-needed"
@@ -11,8 +11,6 @@
   </div>
 </template>
 <script>
-import uuidV4 from "uuid/v4";
-import ArrayUtils from "../src/array-utils.js";
 import ExerciseTimerComponent from "./ExerciseTimerComponent.vue";
 
 export default {
