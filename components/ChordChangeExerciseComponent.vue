@@ -4,15 +4,15 @@
     <h3>-~ {{ getTitle() }} ~-</h3>
     <template v-for="(item, index) in exercise.chords">
       <ChordTabComponent
-        v-bind:chord-name="item"
-        v-bind:class="{ 'exercise__chord-tab--margin-left': index % 2 !== 0, 'exercise__chord-tab--margin': true }"
+        :chord-name="item"
+        :class="{ 'exercise__chord-tab--margin-left': index % 2 !== 0, 'exercise__chord-tab--margin': true }"
       />
     </template>
     <ExerciseTimerComponent
-      v-bind:exercise-id="exercise.id"
-      v-bind:count-down-time-length-ms="60000"
-      v-bind:show-count-up-time="false"
-      v-bind:show-count-down-time="true"
+      :exercise-id="exercise.id"
+      :count-down-time-length-ms="60000"
+      :show-count-up-time="false"
+      :show-count-down-time="true"
     />
     <div class="exercise__history-msg">{{ getHistoryMsg(this.exercise.id) }}</div>
   </div>
