@@ -1,30 +1,42 @@
 <template>
   <div>
-    <span v-visible="isStartVisible || isStopVisible" class="timer__decoration">
-      <span class="timer__display" v-show="isCountDownVisible">{{ countDownTime }}</span>
-      <span class="timer__display" v-show="isCountUpVisible">{{ countUpTime }}</span>
-      <input
-        type="number"
-        class="timer__bpm"
-        :min="minBpm"
-        :max="maxBpm"
-        placeholder="BPM"
-        v-model="bpm"
-        :disabled="!isStartVisible"
-      />
-      <button 
-        type="button" 
-        class="timer__button" 
-        v-show="isStartVisible" 
-        v-on:click="start"
-      >Start</button>
-      <button
-        type="button"
-        class="timer__button"
-        v-show="isStopVisible"
-        v-on:click="stop(false)"
-      >Stop</button>
-    </span>
+    <div class="timer__decoration">
+      <div>
+        <span class="timer__display-main">
+          <span class="timer__digits" v-show="isCountDownVisible">{{ countDownTime }}</span>
+          <span class="timer__digits" v-show="isCountUpVisible">{{ countUpTime }}</span>
+        </span>
+        <input
+          type="number"
+          class="timer__bpm"
+          :min="minBpm"
+          :max="maxBpm"
+          placeholder="BPM"
+          v-model="bpm"
+          :disabled="!isStartVisible"
+        />
+        <button type="button" class="timer__button" v-show="isStartVisible" v-on:click="start">Start</button>
+        <button
+          type="button"
+          class="timer__button"
+          v-show="isStopVisible"
+          v-on:click="stop(false)"
+        >Stop</button>
+      </div>
+      <div>
+        <label class="timer__accent-label">
+          <select v-model="selectedMetronomeId" :disabled="!isStartVisible">
+            <option v-for="s in metronomeSounds" v-bind:value="s.id">{{ s.description }}</option>
+          </select>
+          <input
+            type="checkbox"
+            :disabled="!isStartVisible"
+            v-model="accent"
+            class="timer__accent-checkbox"
+          />Accent
+        </label>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -34,8 +46,10 @@ import TimeUtils from "../src/time-utils";
 import { MinBpm, MaxBpm } from "../src/consts.js";
 import { Howl } from "howler";
 import DingSound from "../media/sounds/ding.opus";
-import Metro1Sound from "../media/sounds/conga.opus";
-import Metro2Sound from "../media/sounds/clave.opus";
+import MetroGrp01Snd01 from "../media/sounds/conga.opus";
+import MetroGrp01Snd02 from "../media/sounds/clave.opus";
+import MetroGrp02Snd01 from "../media/sounds/cowbell-lo.opus";
+import MetroGrp02Snd02 from "../media/sounds/cowbell-hi.opus";
 
 export default {
   _timer: null,
@@ -48,6 +62,24 @@ export default {
   _beatIntervalMs: null,
   _beatLast: null,
   _beatNum: 1,
+  data: function() {
+    return {
+      metronomeSounds: [
+        {
+          id: 1,
+          description: "Conga & Clave",
+          boop: new Howl({ src: [MetroGrp01Snd01] }),
+          accent: new Howl({ src: [MetroGrp01Snd02] })
+        },
+        {
+          id: 2,
+          description: "Cowbell",
+          boop: new Howl({ src: [MetroGrp02Snd01] }),
+          accent: new Howl({ src: [MetroGrp02Snd02] })
+        }
+      ]
+    };
+  },
   mounted() {
     this.$options._timer = new Tock({
       countdown: true,
@@ -57,12 +89,6 @@ export default {
     });
     this.$options._ding = new Howl({
       src: [DingSound]
-    });
-    this.$options._metro1 = new Howl({
-      src: [Metro1Sound]
-    });
-    this.$options._metro2 = new Howl({
-      src: [Metro2Sound]
     });
   },
   props: {
@@ -127,10 +153,14 @@ export default {
       ) {
         this.$options._beatLast = lap;
 
-        if (this.$options._beatNum === 4) {
-          this.$options._metro2.play();
+        const sounds =
+          this.metronomeSounds.find(s => s.id === this.selectedMetronomeId) ||
+          this.metronomeSounds[0];
+
+        if (this.accent && this.$options._beatNum === 4) {
+          sounds.accent.play();
         } else {
-          this.$options._metro1.play();
+          sounds.boop.play();
         }
 
         this.$options._beatNum++;
@@ -157,6 +187,22 @@ export default {
       },
       set(value) {
         this.$store.dispatch("updateBpm", parseInt(value, 10));
+      }
+    },
+    accent: {
+      get() {
+        return this.$store.state.exerciseTimer.accent;
+      },
+      set(value) {
+        this.$store.dispatch("updateAccent", value);
+      }
+    },
+    selectedMetronomeId: {
+      get() {
+        return this.$store.state.exerciseTimer.metronomeSoundId;
+      },
+      set(value) {
+        this.$store.dispatch("updateMetronomeSoundId", value);
       }
     },
     countDownTime() {
@@ -201,15 +247,22 @@ export default {
 
 <style scoped>
 .timer__decoration {
-  display: inline-block;
   padding: 2px;
-  border-bottom: 2px solid black;
 }
 
-.timer__display {
+.timer__digits {
   font-family: "Cutive Mono", monospace;
   font-size: 24px;
   vertical-align: middle;
+}
+
+.timer__display-main {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 120px;
+  height: 30px;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .timer__button {
@@ -218,5 +271,17 @@ export default {
 
 .timer__bpm {
   width: 4em;
+  vertical-align: middle;
+}
+
+.timer__accent-label {
+  margin-left: 5px;
+  padding: 0 5px;
+  background: rgba(255, 255, 255, 0.6);
+  vertical-align: middle;
+}
+
+.timer__accent-checkbox {
+  vertical-align: middle;
 }
 </style>
