@@ -65,7 +65,9 @@ const state = {
   exerciseTimer: {
     id: "",
     timeMs: TimerLengthMs,
-    bpm: null
+    bpm: null,
+    accent: true,
+    metronomeSoundId: 1
   },
   exerciseHistory: []
 };
@@ -127,6 +129,12 @@ const mutations = {
   },
   setBpm(state, bpm) {
     state.exerciseTimer.bpm = bpm;
+  },
+  setAccent(state, accent) {
+    state.exerciseTimer.accent = accent;
+  },
+  setMetronomeSoundId(state, metronomeSoundId) {
+    state.exerciseTimer.metronomeSoundId = metronomeSoundId;
   }
 };
 
@@ -146,6 +154,12 @@ const actions = {
   },
   updateBpm(context, bpm) {
     context.commit('setBpm', bpm);
+  },
+  updateAccent(context, accent) {
+    context.commit('setAccent', accent);
+  },
+  updateMetronomeSoundId(context, metronomeSoundId) {
+    context.commit('setMetronomeSoundId', metronomeSoundId);
   }
 };
 
