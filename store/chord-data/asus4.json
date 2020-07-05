@@ -1,0 +1,28 @@
+{
+  "name": "Asus4",
+  "firstFret": 1,
+  "fingers": [
+    {
+      "finger": 1,
+      "fret": 2,
+      "string": 4
+    },
+    {
+      "finger": 2,
+      "fret": 2,
+      "string": 3
+    },
+    {
+      "finger": 4,
+      "fret": 3,
+      "string": 2
+    }
+  ],
+  "strum": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ]
+}

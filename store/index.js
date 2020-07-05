@@ -27,6 +27,11 @@ import MajorIonian from './scale-data/major-(ionian).json'
 import Dorian from './scale-data/dorian.json'
 import {TimerLengthMs, MotivationalStrings} from '../src/consts.js';
 import ArrayUtils from '../src/array-utils.js'
+import Asus4 from './chord-data/asus4.json'
+import Asus2 from './chord-data/asus2.json'
+import Dsus4 from './chord-data/dsus4.json'
+import Dsus2 from './chord-data/dsus2.json'
+import Esus4 from './chord-data/esus4.json'
 
 Vue.use(Vuex);
 
@@ -49,7 +54,12 @@ const state = {
     E7,
     F,
     Falt1,
-    Falt2
+    Falt2,
+    Asus4,
+    Asus2,
+    Dsus4,
+    Dsus2,
+    Esus4
   ],
   scales: [
     MinorPentatonic,
