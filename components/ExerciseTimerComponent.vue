@@ -50,6 +50,8 @@ import MetroGrp01Snd01 from "../media/sounds/conga.opus";
 import MetroGrp01Snd02 from "../media/sounds/clave.opus";
 import MetroGrp02Snd01 from "../media/sounds/cowbell-lo.opus";
 import MetroGrp02Snd02 from "../media/sounds/cowbell-hi.opus";
+import MetroGrp03Snd01 from "../media/sounds/sayko-lo.opus";
+import MetroGrp03Snd02 from "../media/sounds/sayko-hi.opus";
 
 export default {
   _timer: null,
@@ -76,6 +78,12 @@ export default {
           description: "Cowbell",
           boop: new Howl({ src: [MetroGrp02Snd01] }),
           accent: new Howl({ src: [MetroGrp02Snd02] })
+        },
+        {
+          id: 3,
+          description: "Sayko",
+          boop: new Howl({ src: [MetroGrp03Snd01]}),
+          accent: new Howl({ src: [MetroGrp03Snd02]})
         }
       ]
     };
