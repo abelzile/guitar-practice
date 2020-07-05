@@ -82,8 +82,8 @@ export default {
         {
           id: 3,
           description: "Sayko",
-          boop: new Howl({ src: [MetroGrp03Snd01]}),
-          accent: new Howl({ src: [MetroGrp03Snd02]})
+          boop: new Howl({ src: [MetroGrp03Snd01] }),
+          accent: new Howl({ src: [MetroGrp03Snd02] })
         }
       ]
     };
