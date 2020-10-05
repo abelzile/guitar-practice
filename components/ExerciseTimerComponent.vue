@@ -24,10 +24,10 @@
         >Stop</button>
       </div>
       <div>
+        <select v-model="selectedMetronomeId" :disabled="!isStartVisible">
+          <option v-for="s in metronomeSounds" v-bind:value="s.id">{{ s.description }}</option>
+        </select>
         <label class="timer__accent-label">
-          <select v-model="selectedMetronomeId" :disabled="!isStartVisible">
-            <option v-for="s in metronomeSounds" v-bind:value="s.id">{{ s.description }}</option>
-          </select>
           <input
             type="checkbox"
             :disabled="!isStartVisible"
