@@ -36,7 +36,7 @@
 </template>
 
 <script>
-  import uuidV4 from 'uuid/v4'
+  import { v4 as uuidV4 } from 'uuid';
   import {mapGetters} from 'vuex'
   import ArrayUtils from '../src/array-utils.js';
   import ChordChangeExerciseComponent from './ChordChangeExerciseComponent.vue'
